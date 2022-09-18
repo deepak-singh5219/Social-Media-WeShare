@@ -7,10 +7,12 @@ import {
     FontAwesome5,
     MaterialCommunityIcons,
   } from "@expo/vector-icons";
+import { useState } from 'react';  
 
 const FeedPost = ({post}) => {
+    
+    const [isLiked,setIsLiked] = useState(false);
 
-   
   return (
     <View style = {styles.post}>
       
@@ -60,8 +62,16 @@ const FeedPost = ({post}) => {
         <View style={styles.buttonsRow}>
 
             <View style={styles.btn}>
-            <AntDesign name="like2" size={18} color="gray" />
-                <Text style={styles.btnText}>Like</Text>
+            <AntDesign name="like2" 
+            size={18} 
+            color={isLiked? "royalblue" : "gray" }
+            />
+                <Text style={
+                    [
+                        styles.btnText,
+                        {color: isLiked? "royalblue":"gray"},
+                    ]
+                }>Like</Text>
             </View>
             <View style={styles.btn}>
             <FontAwesome5 name="comment-alt" size={14} color="gray" />
